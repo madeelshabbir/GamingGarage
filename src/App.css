@@ -1,0 +1,65 @@
+.navbar-dark {
+    background-color: #fbff12;
+}
+
+.jumbotron {
+    padding:70px 30px 70px 30px;
+    margin:0px auto;
+    background: #0C0F0A;
+    background-size: 300px 250px;
+    color: #fbff12;
+    border-radius: 0;
+}
+
+.modal-header{
+    background-color: #0C0F0A;
+    color: #fbff12;
+}
+
+.modal-body,.modal-footer{
+    background-color:  #fbff12;
+    color:#0C0F0A;
+}
+
+.footer{
+    background-color: #fbff12;
+    margin:0px auto;
+    padding: 20px 0px 20px 0px;
+}
+
+address{
+    font-size:80%;
+    margin:0px;
+    color: #0C0F0A;
+}
+
+.row-header{
+    margin:0px auto;
+    padding:0px auto;
+}
+
+.nav-link{
+    color: #0C0F0A;
+}
+.btn{
+    background-color: #0C0F0A;
+}
+.fa-envelope-o{
+    color: white;
+}
+
+.modal-label{
+    font-weight: 500;
+}
+.close{
+    position: absolute;
+    right: 20px;
+    color:  #fbff12;
+}
+
+.create-account{
+    font-weight: 500;
+    color: #0C0F0A;
+    position: absolute;
+    left: 20px;
+}
