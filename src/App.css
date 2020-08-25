@@ -63,3 +63,56 @@ address{
     position: absolute;
     left: 20px;
 }
+.card{
+    opacity: 0.9;
+    background-color: #0C0F0A;
+    color: #fbff12;
+}
+.card:hover{
+    opacity: 1;
+}
+.card > img {
+    width: 95%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+}
+.tiles > .container{
+    border-radius: 0px;
+    margin-bottom: 30px;
+}
+.carousel-item > .card{
+    width: 75%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.card-body{
+    height: 120px;
+}
+.carousel{
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.carousel-caption{ 
+    color: #0C0F0A;
+}
+
+
+.carousel-control-prev,.carousel-control-next {
+    cursor:pointer;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon{
+    width: 50%;
+    height: 30%;
+    background-color: #0C0F0A;
+}
+
+.carousel-control-prev-icon{
+    background-image: url('/assets/images/arrowleft.png');
+}
+.carousel-control-next-icon{
+    background-image: url('/assets/images/arrowright.png');
+}

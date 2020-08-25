@@ -42,26 +42,26 @@ class Header extends Component{
                     <NavbarBrand className="mr-auto" href="/">
                         <img src='assets/images/logo.png' height="50" width="50" alt='Gaming Garage' />
                     </NavbarBrand>
+                    <span className="order-sm-2">
+                        <a style={{ position: 'right' }} onClick={this.toggleModal1} className="nav-link" ><span className="fa fa-sign-in"></span> Login</a>
+                    </span>
                     <Collapse isOpen={this.state.isNavOpen} navbar>
                         <Nav navbar>
-                            <NavItem>
+                            <NavItem className="ml-5 ml-md-0">
                                 <a style={{ color: '#0C0F0A' }} className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span> Home</a>
                             </NavItem>
-                            <NavItem>
+                            <NavItem className="ml-5 ml-md-0">
                                 <a style={{ color: '#0C0F0A' }} className="nav-link" to='/about'><span className="fa fa-info fa-lg"></span> About</a>
                             </NavItem>
-                            <NavItem>
+                            <NavItem className="ml-5 ml-md-0">
                                 <a style={{ color: '#0C0F0A' }} className="nav-link"  to='/community'><span className="fa fa-users fa-lg"></span> Community</a>
                             </NavItem>
-                            <NavItem>
+                            <NavItem className="ml-5 ml-md-0">
                                 <a style={{ color: '#0C0F0A' }} className="nav-link" to='/contact'><span className="fa fa-address-card fa-lg"></span> Support</a>
                             </NavItem>
                         </Nav>
                     </Collapse>
-                    <span className="order-sm-2">
-                        <a onClick={this.toggleModal1} className="nav-link" ><span className="fa fa-sign-in"></span> Login</a>
-                    </span>
-                    <span className="btn-group order-sm-1" role="group">
+                    <span className="btn-group order-sm-1 mx-auto" role="group">
                         <Input type="search" id="search" name="search" placeholder="Search" />
                         <Button>Search</Button>
                     </span>
