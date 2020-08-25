@@ -128,7 +128,7 @@ class Header extends Component{
                     </Form>
                 </ModalBody>
                 <ModalFooter>
-                    <a onClick={() => { this.toggleModal1(); this.toggleModal2();}} className="create-account" md={{offset:2}}>Already have account</a>
+                    <a onClick={() => { this.toggleModal1(); this.toggleModal2();}} className="create-account" md={{offset:2}}>Create an account</a>
                     <Button onClick={this.toggleModal2} type="button" class="btn btn-secondary btn-sm ml-auto">Cancel</Button>
                     <Button type="submit" class="btn btn-primary btn-sm ml-1">Sign up</Button>
                 </ModalFooter>
