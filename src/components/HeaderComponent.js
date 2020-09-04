@@ -6,11 +6,13 @@ class Header extends Component{
         this.state = {
             isNavOpen: false,
             isModal1Open: false,
-            isModal2Open: false
+            isModal2Open: false,
+            isModal3Open: false
         };
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal1 = this.toggleModal1.bind(this);
         this.toggleModal2 = this.toggleModal2.bind(this);
+        this.toggleModal3 = this.toggleModal3.bind(this);
     }
 
     toggleNav(){
@@ -31,12 +33,24 @@ class Header extends Component{
         });
     }
 
+    toggleModal3(){
+        this.setState({
+            isModal3Open: !this.state.isModal3Open
+        });
+    }
+
+    NavItm = ({value}) => { return(
+        <NavItem className="ml-5 ml-md-0">
+            <a style={{ color: '#0C0F0A' }} className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span>{value}</a>
+        </NavItem>
+    );}
+
     render(){
         return(
         <React.Fragment>
             <Navbar dark expand="md" className="nav-bar">
                 <div className="container-fluid">
-                    <NavbarToggler onClick={this.toggleNav}>
+                    <NavbarToggler onClick={this.toggleModal3}>
                         <img src='assets/images/navtoggler.png' height="30" width="30" alt='Toggler' />
                     </NavbarToggler>
                     <NavbarBrand className="mr-auto" href="/">
@@ -45,7 +59,7 @@ class Header extends Component{
                     <span className="order-sm-2">
                         <a style={{ position: 'right' }} onClick={this.toggleModal1} className="nav-link" ><span className="fa fa-sign-in"></span> Login</a>
                     </span>
-                    <Collapse isOpen={this.state.isNavOpen} navbar>
+                    <Collapse isOpen={false} navbar>
                         <Nav navbar>
                             <NavItem className="ml-5 ml-md-0">
                                 <a style={{ color: '#0C0F0A' }} className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span> Home</a>
@@ -132,6 +146,30 @@ class Header extends Component{
                     <Button onClick={this.toggleModal2} type="button" class="btn btn-secondary btn-sm ml-auto">Cancel</Button>
                     <Button type="submit" class="btn btn-primary btn-sm ml-1">Sign up</Button>
                 </ModalFooter>
+            </Modal>
+            <Modal isOpen={this.state.isModal3Open}>
+                <div className="modal-three">
+                <div variant="raised" onClick={this.toggleModal3} className="close close-sz"/>
+                <ModalBody>
+                    <NavbarBrand className="mr-auto" href="/">
+                        <img src='assets/images/logo.png' height="50" width="50" alt='Gaming Garage' />
+                    </NavbarBrand>
+                    <Nav navbar>
+                            <NavItem style={{borderBottom: '1px solid #000'}}>
+                                <a style={{ color: '#0C0F0A' }} className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span> Home</a>
+                            </NavItem>
+                            <NavItem style={{borderBottom: '1px solid #000'}}>
+                                <a style={{ color: '#0C0F0A' }} className="nav-link" to='/about'><span className="fa fa-info fa-lg"></span> About</a>
+                            </NavItem>
+                            <NavItem style={{borderBottom: '1px solid #000'}}>
+                                <a style={{ color: '#0C0F0A' }} className="nav-link"  to='/community'><span className="fa fa-users fa-lg"></span> Community</a>
+                            </NavItem>
+                            <NavItem style={{borderBottom: '1px solid #000'}}>
+                                <a style={{ color: '#0C0F0A' }} className="nav-link" to='/contact'><span className="fa fa-address-card fa-lg"></span> Support</a>
+                            </NavItem>
+                        </Nav>
+                </ModalBody>
+                </div>
             </Modal>
             <Jumbotron style={{ backgroundImage: `url(${'assets/images/jumback.png'})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right'}}>
                 <div className="container">

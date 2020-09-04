@@ -1,16 +1,15 @@
 import React from 'react';
-import Header from './components/HeaderComponent';
-import Home from './components/HomeComponent';
-import Footer from './components/FooterComponent';
+import Main from './components/MainComponent';
 import './App.css';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
-    <div style={{backgroundColor: '#feffb5'}} className="App">
-      <Header />
-      <Home />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div>
+        <Main />
+      </div>
+    </BrowserRouter>
   );
 }
 

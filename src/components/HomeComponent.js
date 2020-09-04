@@ -97,7 +97,6 @@ class Home extends Component{
               <CardBody>
                 <CardTitle>{game.name}</CardTitle>
                 <CardSubtitle>{game.price}</CardSubtitle>
-
               </CardBody>
           </Card>
           </Container>

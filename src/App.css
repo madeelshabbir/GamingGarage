@@ -99,8 +99,7 @@ address{
     color: #0C0F0A;
 }
 
-
-.carousel-control-prev,.carousel-control-next {
+.card, .carousel-control-prev,.carousel-control-next {
     cursor:pointer;
 }
 
@@ -115,4 +114,25 @@ address{
 }
 .carousel-control-next-icon{
     background-image: url('/assets/images/arrowright.png');
+}
+.modal-three > .modal-body{
+    width: 70%;
+    height: 615px;
+    position: absolute;
+    margin-left: -10px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+.close-sz{
+    width: 100%;
+    height: 615px;
+    background-color: transparent;
+    opacity: 0;
+    margin: -10px;
+}
+
+@media only screen and (min-width: 786px) {
+    .modal-three > .modal-body{
+        display: none;
+    }
 }
