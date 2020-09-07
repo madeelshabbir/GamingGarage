@@ -63,6 +63,7 @@ address{
     position: absolute;
     left: 20px;
 }
+
 .card{
     opacity: 0.9;
     background-color: #0C0F0A;
@@ -93,7 +94,6 @@ address{
 }
 .carousel{
     margin-bottom: 30px;
-    margin-top: 30px;
 }
 .carousel-caption{ 
     color: #0C0F0A;
@@ -136,3 +136,32 @@ address{
         display: none;
     }
 }
+
+.navbar-nav > .nav-item > .nav-link{
+    color: #0C0F0A !important;
+}
+.navbar-nav > .nav-item > .nav-link:hover{
+    color: #00b4d8 !important;
+}
+
+.link{
+    color: #fbff12;
+}
+
+.link:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.sticky-nav {
+    position: sticky;
+    top: 0;
+}
+
+.breadcrumb{
+    background-color: #fbff12;
+}
+
+.breadcrumb >.active a {
+    color: #0C0F0A;
+ }

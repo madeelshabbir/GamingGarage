@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Input, Form, FormGroup, Label, Col, Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Link, NavLink } from 'react-router-dom';
+
 class Header extends Component{
     constructor(props){
         super(props);
@@ -39,16 +41,10 @@ class Header extends Component{
         });
     }
 
-    NavItm = ({value}) => { return(
-        <NavItem className="ml-5 ml-md-0">
-            <a style={{ color: '#0C0F0A' }} className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span>{value}</a>
-        </NavItem>
-    );}
-
     render(){
         return(
         <React.Fragment>
-            <Navbar dark expand="md" className="nav-bar">
+            <Navbar dark expand="md" className="nav-bar sticky-nav" fixed='top'>
                 <div className="container-fluid">
                     <NavbarToggler onClick={this.toggleModal3}>
                         <img src='assets/images/navtoggler.png' height="30" width="30" alt='Toggler' />
@@ -57,21 +53,21 @@ class Header extends Component{
                         <img src='assets/images/logo.png' height="50" width="50" alt='Gaming Garage' />
                     </NavbarBrand>
                     <span className="order-sm-2">
-                        <a style={{ position: 'right' }} onClick={this.toggleModal1} className="nav-link" ><span className="fa fa-sign-in"></span> Login</a>
+                        <Link style={{ position: 'right' }} onClick={this.toggleModal1} className="nav-link" to='#'><span className="fa fa-sign-in"></span> Login</Link>
                     </span>
                     <Collapse isOpen={false} navbar>
                         <Nav navbar>
                             <NavItem className="ml-5 ml-md-0">
-                                <a style={{ color: '#0C0F0A' }} className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span> Home</a>
+                                <NavLink className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span> Home</NavLink>
                             </NavItem>
                             <NavItem className="ml-5 ml-md-0">
-                                <a style={{ color: '#0C0F0A' }} className="nav-link" to='/about'><span className="fa fa-info fa-lg"></span> About</a>
+                                <NavLink className="nav-link" to='/about'><span className="fa fa-info fa-lg"></span> About</NavLink>
                             </NavItem>
                             <NavItem className="ml-5 ml-md-0">
-                                <a style={{ color: '#0C0F0A' }} className="nav-link"  to='/community'><span className="fa fa-users fa-lg"></span> Community</a>
+                                <NavLink className="nav-link"  to='/community'><span className="fa fa-users fa-lg"></span> Community</NavLink>
                             </NavItem>
                             <NavItem className="ml-5 ml-md-0">
-                                <a style={{ color: '#0C0F0A' }} className="nav-link" to='/contact'><span className="fa fa-address-card fa-lg"></span> Support</a>
+                                <NavLink className="nav-link" to='/contact'><span className="fa fa-address-card fa-lg"></span> Support</NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>
@@ -109,7 +105,7 @@ class Header extends Component{
                     </Form>
                 </ModalBody>
                 <ModalFooter>
-                    <a onClick={() => { this.toggleModal1(); this.toggleModal2();}} className="create-account" md={{offset:2}}>Don't have account</a>
+                    <a href='#' onClick={() => { this.toggleModal1(); this.toggleModal2();}} className="create-account" md={{offset:2}}>Don't have account</a>
                     <Button onClick={this.toggleModal1} type="button" class="btn btn-secondary btn-sm ml-auto">Cancel</Button>
                     <Button type="submit" class="btn btn-primary btn-sm ml-1">Sign in</Button>
                 </ModalFooter>
@@ -142,7 +138,7 @@ class Header extends Component{
                     </Form>
                 </ModalBody>
                 <ModalFooter>
-                    <a onClick={() => { this.toggleModal1(); this.toggleModal2();}} className="create-account" md={{offset:2}}>Create an account</a>
+                    <a href='#' onClick={() => { this.toggleModal1(); this.toggleModal2();}} className="create-account" md={{offset:2}}>Create an account</a>
                     <Button onClick={this.toggleModal2} type="button" class="btn btn-secondary btn-sm ml-auto">Cancel</Button>
                     <Button type="submit" class="btn btn-primary btn-sm ml-1">Sign up</Button>
                 </ModalFooter>
@@ -155,17 +151,17 @@ class Header extends Component{
                         <img src='assets/images/logo.png' height="50" width="50" alt='Gaming Garage' />
                     </NavbarBrand>
                     <Nav navbar>
-                            <NavItem style={{borderBottom: '1px solid #000'}}>
-                                <a style={{ color: '#0C0F0A' }} className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span> Home</a>
+                            <NavItem style={{borderBottom: '1px solid #0C0F0A'}}>
+                                <NavLink className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span> Home</NavLink>
                             </NavItem>
-                            <NavItem style={{borderBottom: '1px solid #000'}}>
-                                <a style={{ color: '#0C0F0A' }} className="nav-link" to='/about'><span className="fa fa-info fa-lg"></span> About</a>
+                            <NavItem style={{borderBottom: '1px solid #0C0F0A'}}>
+                                <NavLink className="nav-link" to='/about'><span className="fa fa-info fa-lg"></span> About</NavLink>
                             </NavItem>
-                            <NavItem style={{borderBottom: '1px solid #000'}}>
-                                <a style={{ color: '#0C0F0A' }} className="nav-link"  to='/community'><span className="fa fa-users fa-lg"></span> Community</a>
+                            <NavItem style={{borderBottom: '1px solid #0C0F0A'}}>
+                                <NavLink className="nav-link"  to='/community'><span className="fa fa-users fa-lg"></span> Community</NavLink>
                             </NavItem>
-                            <NavItem style={{borderBottom: '1px solid #000'}}>
-                                <a style={{ color: '#0C0F0A' }} className="nav-link" to='/contact'><span className="fa fa-address-card fa-lg"></span> Support</a>
+                            <NavItem style={{borderBottom: '1px solid #0C0F0A'}}>
+                                <NavLink className="nav-link" to='/contact'><span className="fa fa-address-card fa-lg"></span> Support</NavLink>
                             </NavItem>
                         </Nav>
                 </ModalBody>

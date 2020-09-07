@@ -1,52 +1,11 @@
 import React, { Component } from 'react';
-import { Container, Carousel, CarouselItem, CarouselControl,  CarouselIndicators, Card, CardTitle, CardSubtitle, CardImg, CardBody, Row, Col} from 'reactstrap';
+import { Container, Carousel, CarouselItem, CarouselControl,  CarouselIndicators, Card, CardTitle, CardSubtitle, CardImg, CardBody, Row, Col, Breadcrumb, BreadcrumbItem} from 'reactstrap';
+import { Link } from 'react-router-dom';
 class Home extends Component{
     constructor(props){
         super(props);
         this.state= {
-            games: [
-                {
-                  src: 'assets/images/fallguys.jpg',
-                  name: 'Fall Guys',
-                  price: '1200 PKR'
-                },
-                {
-                  src: 'assets/images/codbo3.jpg',
-                  name: 'COD Black Ops 3',
-                  price: '3000 PKR'
-                },
-                {
-                  src: 'assets/images/gta5.jpg',
-                  name: 'Grand Theft Auto 5',
-                  price: '1900 PKR'
-                },
-                {
-                  src: 'assets/images/rdr2.jpg',
-                  name: 'Red Dead Redemption 2',
-                  price: '5500 PKR'
-                },
-                {
-                  src: 'assets/images/r6s.jpg',
-                  name: 'Rainbow Six Siege',
-                  price: '1900 PKR'
-                },
-                {
-                  src: 'assets/images/bfbc2.jpg',
-                  name: 'Battlefield Bad Company 2',
-                  price: '700 PKR'
-                },
-                {
-                  src: 'assets/images/tkn7.jpg',
-                  name: 'Tekken 7',
-                  price: '1000 PKR'
-                },
-                {
-                  src: 'assets/images/wwe2k20.jpg',
-                  name: 'WWE 2K20',
-                  price: '3000 PKR'
-                }
-              ],
-              activeIndex: 0
+            activeIndex: 0
         };
         this.previous = this.previous.bind(this);
         this.next = this.next.bind(this);
@@ -54,12 +13,12 @@ class Home extends Component{
     }
     previous = () => {
       if (this.animating) return;
-      const nextIndex = this.state.activeIndex === 0 ? this.state.games.length - 1 : this.state.activeIndex - 1;
+      const nextIndex = this.state.activeIndex === 0 ? this.props.games.length - 1 : this.state.activeIndex - 1;
       this.setState({ activeIndex: nextIndex });
     }
     next = () => {
       if (this.animating) return;
-      const nextIndex = this.state.activeIndex === this.state.games.length - 1 ? 0 : this.state.activeIndex + 1;
+      const nextIndex = this.state.activeIndex === this.props.games.length - 1 ? 0 : this.state.activeIndex + 1;
       this.setState({ activeIndex: nextIndex });
     }
     goToIndex = (newIndex) => {
@@ -68,7 +27,7 @@ class Home extends Component{
     }
 
     render(){
-      const slides = this.state.games.map((game) => {
+      const slides = this.props.games.map((game) => {
         return (
           <CarouselItem
             onExiting={() => {
@@ -80,24 +39,28 @@ class Home extends Component{
             key={game.src}
           >
             <Card>
+            <Link className="link" to={`/home/${game.id}`}>
             <CardImg width="100%" src={game.src} alt={game.name} />
             <CardBody>
               <CardTitle>{game.name}</CardTitle>
               <CardSubtitle>{game.price}</CardSubtitle>
             </CardBody>
+            </Link>
             </Card>
           </CarouselItem>
         );
       });
-      const tiles = this.state.games.map((game) => {
+      const tiles = this.props.games.map((game) => {
         return(
           <Container className="col-sm-3">
           <Card>
+            <Link className="link" to={`/home/${game.id}`}>
             <CardImg width="100%" src={game.src} alt={game.name} />
               <CardBody>
                 <CardTitle>{game.name}</CardTitle>
                 <CardSubtitle>{game.price}</CardSubtitle>
               </CardBody>
+            </Link>
           </Card>
           </Container>
         );
@@ -105,12 +68,17 @@ class Home extends Component{
       return(
             <React.Fragment>
               <Container>
-                  <Carousel
+                <Row>
+                  <Breadcrumb>
+                    <BreadcrumbItem><Link style={{color: '#0C0F0A'}} to="/home">Home</Link></BreadcrumbItem>
+                  </Breadcrumb>
+                </Row>
+                <Carousel
                     activeIndex={this.state.activeIndex}
                     next={this.next}
                     previous={this.previous}
                   >
-                    <CarouselIndicators items={this.state.games} activeIndex={this.state.activeIndex} onClickHandler={this.goToIndex} />
+                    <CarouselIndicators items={this.props.games} activeIndex={this.state.activeIndex} onClickHandler={this.goToIndex} />
                       {slides}
                     <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous}/>
                     <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
