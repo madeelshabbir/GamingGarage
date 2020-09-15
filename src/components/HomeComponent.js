@@ -43,7 +43,7 @@ class Home extends Component{
             <CardImg width="100%" src={game.src} alt={game.name} />
             <CardBody>
               <CardTitle>{game.name}</CardTitle>
-              <CardSubtitle>{game.price}</CardSubtitle>
+              <CardSubtitle>{game.price+' pkr'}</CardSubtitle>
             </CardBody>
             </Link>
             </Card>
@@ -57,8 +57,7 @@ class Home extends Component{
             <Link className="link" to={`/home/${game.id}`}>
             <CardImg width="100%" src={game.src} alt={game.name} />
               <CardBody>
-                <CardTitle>{game.name}</CardTitle>
-                <CardSubtitle>{game.price}</CardSubtitle>
+                <CardTitle style={{textAlign: 'center'}}>{game.name}</CardTitle>
               </CardBody>
             </Link>
           </Card>
