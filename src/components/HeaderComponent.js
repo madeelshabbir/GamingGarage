@@ -80,10 +80,7 @@ class Header extends Component{
                                 <NavLink className="nav-link" to='/about'><span className="fa fa-info fa-lg"></span> About</NavLink>
                             </NavItem>
                             <NavItem className="ml-5 ml-md-0">
-                                <NavLink className="nav-link"  to='/community'><span className="fa fa-users fa-lg"></span> Community</NavLink>
-                            </NavItem>
-                            <NavItem className="ml-5 ml-md-0">
-                                <NavLink className="nav-link" to='/contact'><span className="fa fa-address-card fa-lg"></span> Support</NavLink>
+                                <NavLink className="nav-link" to='/support'><span className="fa fa-address-card fa-lg"></span> Support</NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>
@@ -164,7 +161,7 @@ class Header extends Component{
                 <div variant="raised" onClick={this.toggleModal3} className="close close-sz"/>
                 <ModalBody>
                     <NavbarBrand className="mr-auto" href="/">
-                        <img src='../assets/images/logo.png' height="50" width="50" alt='Gaming Garage' />
+                        <img src='../assets/images/logo.png' height="100" width="100" alt='Gaming Garage' />
                     </NavbarBrand>
                     <Nav navbar>
                             <NavItem style={{borderBottom: '1px solid #0C0F0A'}}>
@@ -174,12 +171,9 @@ class Header extends Component{
                                 <NavLink className="nav-link" to='/about'><span className="fa fa-info fa-lg"></span> About</NavLink>
                             </NavItem>
                             <NavItem style={{borderBottom: '1px solid #0C0F0A'}}>
-                                <NavLink className="nav-link"  to='/community'><span className="fa fa-users fa-lg"></span> Community</NavLink>
+                                <NavLink className="nav-link" to='/support'><span className="fa fa-address-card fa-lg"></span> Support</NavLink>
                             </NavItem>
-                            <NavItem style={{borderBottom: '1px solid #0C0F0A'}}>
-                                <NavLink className="nav-link" to='/contact'><span className="fa fa-address-card fa-lg"></span> Support</NavLink>
-                            </NavItem>
-                        </Nav>
+                     </Nav>
                 </ModalBody>
                 </div>
             </Modal>

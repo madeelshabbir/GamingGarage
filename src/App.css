@@ -41,11 +41,18 @@ address{
 .nav-link{
     color: #0C0F0A;
 }
+
 .btn{
     background-color: #0C0F0A;
 }
+
 .fa-envelope-o{
     color: white;
+}
+
+.fa-envelope-o:hover{
+    background-color: white;
+    color: red;
 }
 
 .modal-label{

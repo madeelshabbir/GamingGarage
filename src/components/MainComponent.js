@@ -3,6 +3,7 @@ import Header from './HeaderComponent';
 import Home from './HomeComponent';
 import Footer from './FooterComponent';
 import GamesInfo from './GamesInfoComponent';
+import Support from './SupportComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -25,7 +26,8 @@ class Main extends Component {
             <Route path='/home/:gameId' component={({match}) => { return(
                 <GamesInfo cart={this.props.cart} game={this.props.games.filter((game) => game.id === parseInt(match.params.gameId,10))[0]} />
               );}} />
-            <Redirect to="/home" /> 
+            <Route exact path='/support' component={() => <Support /> } />
+            <Redirect to="/home" />
           </Switch>
         <Footer />
       </div>
