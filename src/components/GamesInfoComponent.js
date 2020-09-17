@@ -16,18 +16,21 @@ class GamesInfo extends Component{
                     <BreadcrumbItem active><Link to={`/home/${this.props.game.id}`}>{this.props.game.name}</Link></BreadcrumbItem>
                 </Breadcrumb>
             </Row>
-            <Media style={{marginBottom: '10px', padding: '10px', backgroundColor: 'black', color: '#fbff12'}}>
+            <Media style={{marginBottom: '10px', padding: '20px', backgroundColor: 'black', color: '#fbff12'}}>
                 <div className="col-md-6">
-                    <Media object src={'../'+this.props.game.src}/>                
+                    <Media object width="100%" src={'../'+this.props.game.src} alt={this.props.game.name}/>                
                 </div>
-                <Media body style={{paddingTop: '20px'}}>
-                    <div className="col-md-auto">
+                <Media body className="col-md-auto" style={{paddingTop: '20px'}}>
+                    <div>
                         <Media heading>{this.props.game.name}</Media>
                         <p>{this.props.game.price+' pkr'}</p>
                         <Button onClick={ this.addCart }>Add to Cart</Button>
                     </div>
                 </Media>
             </Media>
+            <div style={{marginBottom: '10px'}} className="embed-responsive embed-responsive-21by9">
+                    <iframe className="embed-responsive-item" src={this.props.game.ytsrc} alt={this.props.game.name}></iframe>
+            </div>
         </Container>
     );
     }

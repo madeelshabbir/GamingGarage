@@ -77,7 +77,7 @@ class Header extends Component{
                                 <NavLink className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span> Home</NavLink>
                             </NavItem>
                             <NavItem className="ml-5 ml-md-0">
-                                <NavLink className="nav-link" to='/about'><span className="fa fa-info fa-lg"></span> About</NavLink>
+                                <NavLink className="nav-link" to='/cart'><span className="fa fa-shopping-cart fa-lg"></span> Cart</NavLink>
                             </NavItem>
                             <NavItem className="ml-5 ml-md-0">
                                 <NavLink className="nav-link" to='/support'><span className="fa fa-address-card fa-lg"></span> Support</NavLink>
@@ -168,7 +168,7 @@ class Header extends Component{
                                 <NavLink className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span> Home</NavLink>
                             </NavItem>
                             <NavItem style={{borderBottom: '1px solid #0C0F0A'}}>
-                                <NavLink className="nav-link" to='/about'><span className="fa fa-info fa-lg"></span> About</NavLink>
+                                <NavLink className="nav-link" to='/cart'><span className="fa fa-shopping-cart fa-lg"></span> Cart</NavLink>
                             </NavItem>
                             <NavItem style={{borderBottom: '1px solid #0C0F0A'}}>
                                 <NavLink className="nav-link" to='/support'><span className="fa fa-address-card fa-lg"></span> Support</NavLink>

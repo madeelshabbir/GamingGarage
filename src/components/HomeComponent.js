@@ -52,7 +52,7 @@ class Home extends Component{
       });
       const tiles = this.props.games.map((game) => {
         return(
-          <Container className="col-sm-3">
+          <Container className="col-md-3 col-sm-6">
           <Card>
             <Link className="link" to={`/home/${game.id}`}>
             <CardImg width="100%" src={game.src} alt={game.name} />
