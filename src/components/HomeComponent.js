@@ -40,7 +40,7 @@ class Home extends Component{
           >
             <Card>
             <Link className="link" to={`/home/${game.id}`}>
-            <CardImg width="100%" src={game.src} alt={game.name} />
+            <CardImg width="100%" src={'../'+game.src} alt={game.name} />
             <CardBody>
               <CardTitle>{game.name}</CardTitle>
               <CardSubtitle>{game.price+' pkr'}</CardSubtitle>
