@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Jumbotron, Form, FormGroup, Label, Button } from 'reactstrap';
+import { Container, Row, Col, Jumbotron, Form, FormGroup, Label, Button, Media } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -13,11 +13,23 @@ class Support extends Component{
     }
 
     handleSubmit = (values) => {
-        console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
+        this.props.addTicket(values.topic, values.email, values.details);
     }
 
     render(){
+        const tickets = this.props.tickets.map((ticket) => {
+            return(
+                <Media key={ticket.email} style={{marginBottom: '10px', padding: '20px', backgroundColor: 'black', color: '#fbff12'}}>
+                <Media body className="col-md-auto" style={{paddingTop: '20px'}}>
+                    <div>
+                        <Media heading>{ticket.topic}</Media>
+                        <p>{"Email: "+ticket.email}</p>
+                        <p>{ticket.details}</p>
+                    </div>
+                </Media>
+            </Media>
+            );
+        })
         return(
             <Container>
                 <Jumbotron style={{marginTop: '20px', marginBottom: '20px'}}>
@@ -38,7 +50,7 @@ class Support extends Component{
                                             placeholder="Enter Topic"
                                             className="form-control"
                                             validators={{
-                                                required, minLength: minLength(2), minLength: minLength(50)
+                                                required, minLength: minLength(2), maxLength: maxLength(50)
                                             }}/>
                                         <Errors
                                             className="text-danger"
@@ -79,7 +91,7 @@ class Support extends Component{
                                             rows="12"
                                             className="form-control"
                                             validators={{
-                                                required, minLength: minLength(5), minLength: minLength(500)
+                                                required, minLength: minLength(5), maxLength: maxLength(1000)
                                             }}/>
                                             <Errors
                                                 className="text-danger"
@@ -104,6 +116,7 @@ class Support extends Component{
                         </Col>
                     </Row>
                 </Jumbotron>
+                {tickets}
             </Container>
         );
     }

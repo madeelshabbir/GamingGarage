@@ -7,13 +7,17 @@ import Support from './SupportComponent';
 import Cart from './CartComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { addTicket } from '../redux/ActionCreators';
 
 const mapStateToProps = (state) => {
   return {
-    games: state.games
+    games: state.games,
+    tickets: state.tickets
   }
 }
-
+const mapDispatchToProps = (dispatch) => ({
+  addTicket: (topic, email, details) => dispatch(addTicket(topic, email, details))
+});
 class Main extends Component {
   constructor(props){
     super(props);
@@ -28,7 +32,7 @@ class Main extends Component {
                 <GamesInfo cart={this.props.cart} game={this.props.games.filter((game) => game.id === parseInt(match.params.gameId,10))[0]} />
               );}} />
             <Route exact path='/cart' component={() => <Cart /> } />
-            <Route exact path='/support' component={() => <Support /> } />
+            <Route exact path='/support' component={() => <Support tickets={this.props.tickets} addTicket={this.props.addTicket}/> } />
             <Redirect to="/home" />
           </Switch>
         <Footer />
@@ -37,4 +41,4 @@ class Main extends Component {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
