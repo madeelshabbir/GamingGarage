@@ -1,7 +1,6 @@
-import { TICKETS } from '../shared/tickets';
 import * as ActionTypes from './ActionTypes';
 
-export const Tickets = (state = TICKETS, action) => {
+export const Tickets = (state = [], action) => {
     switch(action.type){
         case ActionTypes.ADD_TICKET:
             var ticket = action.payload;

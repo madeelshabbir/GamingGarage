@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Carousel, CarouselItem, CarouselControl,  CarouselIndicators, Card, CardTitle, CardSubtitle, CardImg, CardBody, Row, Col, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 import { Link } from 'react-router-dom';
+import Loading from './LoadingComponent';
 class Home extends Component{
     constructor(props){
         super(props);
@@ -25,7 +26,48 @@ class Home extends Component{
       if (this.state.animating) return;
       this.setState({ activeIndex: newIndex });
     }
-
+    gameCard = (game, isLoading, errMsg) => {
+      if (isLoading)
+          return(
+                <Loading />
+          );
+      else if (errMsg)
+          return(
+                  <h4>{errMsg}</h4>
+          );
+      else 
+      return(
+        <Card>
+            <Link className="link" to={`/home/${game.id}`}>
+            <CardImg width="100%" src={game.src} alt={game.name} />
+              <CardBody>
+                <CardTitle style={{textAlign: 'center'}}>{game.name}</CardTitle>
+              </CardBody>
+            </Link>
+        </Card>);
+    }
+    caroCard = (game, isLoading, errMsg) => {
+      if (isLoading)
+          return(
+                <Loading />
+          );
+      else if (errMsg)
+          return(
+                  <h4>{errMsg}</h4>
+          );
+      else 
+      return(
+        <Card>
+          <Link className="link" to={`/home/${game.id}`}>
+            <CardImg width="100%" src={'../'+game.src} alt={game.name} />
+            <CardBody>
+              <CardTitle>{game.name}</CardTitle>
+              <CardSubtitle>{game.price+' pkr'}</CardSubtitle>
+            </CardBody>
+          </Link>
+        </Card>
+      );
+    }
     render(){
       const slides = this.props.games.map((game) => {
         return (
@@ -38,29 +80,14 @@ class Home extends Component{
             }}
             key={game.src}
           >
-            <Card>
-            <Link className="link" to={`/home/${game.id}`}>
-            <CardImg width="100%" src={'../'+game.src} alt={game.name} />
-            <CardBody>
-              <CardTitle>{game.name}</CardTitle>
-              <CardSubtitle>{game.price+' pkr'}</CardSubtitle>
-            </CardBody>
-            </Link>
-            </Card>
+          {this.caroCard(game, this.props.gamesisLoading, this.props.gameserrMsg)}
           </CarouselItem>
         );
       });
       const tiles = this.props.games.map((game) => {
         return(
           <Container className="col-md-3 col-sm-6">
-          <Card>
-            <Link className="link" to={`/home/${game.id}`}>
-            <CardImg width="100%" src={game.src} alt={game.name} />
-              <CardBody>
-                <CardTitle style={{textAlign: 'center'}}>{game.name}</CardTitle>
-              </CardBody>
-            </Link>
-          </Card>
+            {this.gameCard(game, this.props.gamesisLoading, this.props.gameserrMsg)}
           </Container>
         );
       });
