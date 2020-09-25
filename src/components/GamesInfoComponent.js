@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Container, Row, Media, Button, CardSubtitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Loading from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
 
 class GamesInfo extends Component{
     constructor(props){
@@ -11,7 +12,7 @@ class GamesInfo extends Component{
         return(
             <Media style={{marginBottom: '10px', padding: '20px', backgroundColor: 'black', color: '#fbff12'}}>
                 <div className="col-md-6">
-                    <Media object width="100%" src={'../'+game.src} alt={game.name}/>                
+                    <Media object width="100%" src={baseUrl + game.src} alt={game.name}/>                
                 </div>
                 <Media body className="col-md-auto" style={{paddingTop: '20px'}}>
                     <div>

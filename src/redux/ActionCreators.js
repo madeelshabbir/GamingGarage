@@ -1,5 +1,5 @@
 import * as ActionTypes from './ActionTypes';
-import { GAMES } from '../shared/games';
+import { baseUrl } from '../shared/baseUrl';
 
 export const addTicket = (topic, email, details) => ({
     type: ActionTypes.ADD_TICKET,
@@ -12,9 +12,24 @@ export const addTicket = (topic, email, details) => ({
 
 export const fetchGames = () => (dispatch) => {
     dispatch(gamesLoading(true));
-    setTimeout(()=>{
-        dispatch(addGames(GAMES))
-    }, 200);
+    return fetch(baseUrl + 'games')
+        .then(response => {
+            if (response.ok) {
+            return response;
+            } 
+            else {
+                var error = new Error('Error ' + response.status + ': ' + response.statusText);
+                error.response = response;
+                throw error;
+            }
+        },
+        error => {
+                var errmsg = new Error(error.message);
+                throw errmsg;
+        })
+        .then(response => response.json())
+        .then(games => dispatch(addGames(games)))
+        .catch(error => dispatch(gamesFailed(error.message)));
 };
 
 export const gamesLoading = () => ({
@@ -26,7 +41,38 @@ export const gamesFailed = (errmsg) => ({
     payload: errmsg
 });
 
+export const fetchTickets = () => (dispatch) => {    
+    return fetch(baseUrl + 'tickets')
+        .then(response => {
+            if (response.ok) {
+            return response;
+            } 
+            else {
+                var error = new Error('Error ' + response.status + ': ' + response.statusText);
+                error.response = response;
+                throw error;
+            }
+        },
+        error => {
+                var errmsg = new Error(error.message);
+                throw errmsg;
+        })
+        .then(response => response.json())
+        .then(tickets => dispatch(addTickets(tickets)))
+        .catch(error => dispatch(ticketsFailed(error.message)));
+};
+
 export const addGames = (games) => ({
     type: ActionTypes.ADD_GAMES,
     payload: games
+});
+
+export const ticketsFailed = (errmsg) => ({
+    type: ActionTypes.TICKETS_FAILED,
+    payload: errmsg
+});
+
+export const addTickets = (tickets) => ({
+    type: ActionTypes.ADD_TICKETS,
+    payload: tickets
 });

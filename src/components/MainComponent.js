@@ -7,7 +7,8 @@ import Support from './SupportComponent';
 import Cart from './CartComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addTicket, fetchGames } from '../redux/ActionCreators';
+import { addTicket, fetchGames, fetchTickets } from '../redux/ActionCreators';
+import { actions } from 'react-redux-form';
 
 const mapStateToProps = (state) => {
   return {
@@ -17,7 +18,9 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => ({
   addTicket: (topic, email, details) => dispatch(addTicket(topic, email, details)),
-  fetchGames: () => dispatch(fetchGames())
+  fetchGames: () => dispatch(fetchGames()),
+  resetTicketForm: () => { dispatch(actions.reset('ticket'))},
+  fetchTickets: () => dispatch(fetchTickets())
 });
 
 class Main extends Component {
@@ -27,6 +30,7 @@ class Main extends Component {
 
   componentDidMount() {
     this.props.fetchGames();
+    this.props.fetchTickets();
   }
   
   render(){
@@ -36,8 +40,8 @@ class Main extends Component {
           <Switch>
             <Route exact path='/home' component={() => <Home 
               games={this.props.games.games}
-              gamesisLoading={this.props.games.isLoading}
-              gamesErrMsg={this.props.games.errMsg}
+              isLoading={this.props.games.isLoading}
+              ErrMsg={this.props.games.errMsg}
             /> } />
             <Route path='/home/:gameId' component={({match}) => { return(
                 <GamesInfo
@@ -47,7 +51,10 @@ class Main extends Component {
                 />
               );}} />
             <Route exact path='/cart' component={() => <Cart /> } />
-            <Route exact path='/support' component={() => <Support tickets={this.props.tickets} addTicket={this.props.addTicket}/> } />
+            <Route exact path='/support' component={() => <Support
+            tickets={this.props.tickets.tickets}
+            ticketsErrMsg={this.props.tickets.errMsg}
+            addTicket={this.props.addTicket} resetTicketForm={this.props.resetTicketForm}/> } />
             <Redirect to="/home" />
           </Switch>
         <Footer />

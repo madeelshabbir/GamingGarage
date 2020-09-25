@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Container, Carousel, CarouselItem, CarouselControl,  CarouselIndicators, Card, CardTitle, CardSubtitle, CardImg, CardBody, Row, Col, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Loading from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
+
 class Home extends Component{
     constructor(props){
         super(props);
@@ -39,7 +41,7 @@ class Home extends Component{
       return(
         <Card>
             <Link className="link" to={`/home/${game.id}`}>
-            <CardImg width="100%" src={game.src} alt={game.name} />
+            <CardImg width="100%" src={baseUrl + game.src} alt={game.name} />
               <CardBody>
                 <CardTitle style={{textAlign: 'center'}}>{game.name}</CardTitle>
               </CardBody>
@@ -59,7 +61,7 @@ class Home extends Component{
       return(
         <Card>
           <Link className="link" to={`/home/${game.id}`}>
-            <CardImg width="100%" src={'../'+game.src} alt={game.name} />
+            <CardImg width="100%" src={baseUrl + game.src} alt={game.name} />
             <CardBody>
               <CardTitle>{game.name}</CardTitle>
               <CardSubtitle>{game.price+' pkr'}</CardSubtitle>
@@ -80,14 +82,14 @@ class Home extends Component{
             }}
             key={game.src}
           >
-          {this.caroCard(game, this.props.gamesisLoading, this.props.gameserrMsg)}
+          {this.caroCard(game, this.props.isLoading, this.props.errMsg)}
           </CarouselItem>
         );
       });
       const tiles = this.props.games.map((game) => {
         return(
           <Container className="col-md-3 col-sm-6">
-            {this.gameCard(game, this.props.gamesisLoading, this.props.gameserrMsg)}
+            {this.gameCard(game, this.props.isLoading, this.props.errMsg)}
           </Container>
         );
       });

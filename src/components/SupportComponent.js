@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Jumbotron, Form, FormGroup, Label, Button, Media } from 'reactstrap';
-import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Control, LocalForm, Errors, actions } from 'react-redux-form';
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
@@ -14,6 +14,7 @@ class Support extends Component{
 
     handleSubmit = (values) => {
         this.props.addTicket(values.topic, values.email, values.details);
+        this.props.resetTicketForm();
     }
 
     render(){
@@ -42,7 +43,7 @@ class Support extends Component{
                 <Jumbotron style={{marginTop: '20px', marginBottom: '20px'}}>
                     <Row class="row-content">
                         <Col className="col-12 col-md-9">
-                            <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+                            <LocalForm model="ticket" onSubmit={(values) => this.handleSubmit(values)}>
                                 <Row className="form-group" style={{marginTop: '20px'}}>
                                     <Label htmlFor="topic" md={2}><h4>Topic:</h4></Label>
                                     <Col md={10}>
