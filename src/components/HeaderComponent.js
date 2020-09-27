@@ -156,7 +156,7 @@ class Header extends Component{
                     <Button type="submit" class="btn btn-primary btn-sm ml-1">Sign up</Button>
                 </ModalFooter>
             </Modal>
-            <Modal isOpen={this.state.isModal3Open}>
+            <Modal style={{margin: '0px'}} isOpen={this.state.isModal3Open}>
                 <div className="modal-three">
                 <div variant="raised" onClick={this.toggleModal3} className="close close-sz"/>
                 <ModalBody>
