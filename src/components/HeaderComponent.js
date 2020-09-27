@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Input, Form, FormGroup, Label, Col, Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Link, NavLink } from 'react-router-dom';
-import { baseUrl } from '../shared/baseUrl';
 class Header extends Component{
     constructor(props){
         super(props);
@@ -156,7 +155,7 @@ class Header extends Component{
                     <Button type="submit" class="btn btn-primary btn-sm ml-1">Sign up</Button>
                 </ModalFooter>
             </Modal>
-            <Modal style={{margin: '0px'}} isOpen={this.state.isModal3Open}>
+            <Modal role="dialog" location={this.props.location} style={{margin: '0px'}} isOpen={this.state.isModal3Open}>
                 <div className="modal-three">
                 <div variant="raised" onClick={this.toggleModal3} className="close close-sz"/>
                 <ModalBody>

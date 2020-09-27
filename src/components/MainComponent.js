@@ -9,6 +9,7 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { postTicket, fetchGames, fetchTickets } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 const mapStateToProps = (state) => {
   return {
@@ -37,7 +38,7 @@ class Main extends Component {
     return (
       <div style={{backgroundColor: '#feffb5'}}>
         <Header />
-          <Switch>
+            <Switch>
             <Route exact path='/home' component={() => <Home 
               games={this.props.games.games}
               isLoading={this.props.games.isLoading}
