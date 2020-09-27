@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Container, Row, Media, Button, CardSubtitle } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Container, Row, Media, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Loading from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 
 class GamesInfo extends Component{
-    constructor(props){
-        super(props);
-    }
     gameMedia = (game) => {
         return(
             <Media style={{marginBottom: '10px', padding: '20px', backgroundColor: 'black', color: '#fbff12'}}>
@@ -27,7 +24,7 @@ class GamesInfo extends Component{
     videoMedia = (game) => {
         return(
             <div style={{marginBottom: '10px'}} className="embed-responsive embed-responsive-21by9">
-                <iframe className="embed-responsive-item" src={game.ytsrc} alt={game.name}></iframe>
+                <iframe className="embed-responsive-item" src={game.ytsrc} alt={game.name} title={game.name}/>
             </div>
         )
     }

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Jumbotron, Form, FormGroup, Label, Button, Media } from 'reactstrap';
-import { Control, LocalForm, Errors, actions } from 'react-redux-form';
+import { Container, Row, Col, Jumbotron, Label, Button, Media } from 'reactstrap';
+import { Control, LocalForm, Errors} from 'react-redux-form';
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
-const isNumber = (val) => !isNaN(Number(val));
+//const isNumber = (val) => !isNaN(Number(val));
 const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 class Support extends Component{
     constructor(props){
