@@ -11,7 +11,6 @@ export const Tickets = (state = {
             return {...state, errMess: action.payload};
         case ActionTypes.ADD_TICKET:
             var ticket = action.payload;
-            ticket.id = state.tickets.length;
             console.log("Ticket: ", ticket);
             return {...state, tickets: state.tickets.concat(ticket)};
         default:

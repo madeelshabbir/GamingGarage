@@ -161,7 +161,7 @@ class Header extends Component{
                 <div variant="raised" onClick={this.toggleModal3} className="close close-sz"/>
                 <ModalBody>
                     <NavbarBrand className="mr-auto" href="/">
-                        <img src={baseUrl+'assets/images/logo.png'} height="100" width="100" alt='Gaming Garage' />
+                        <img src={'../assets/images/logo.png'} height="100" width="100" alt='Gaming Garage' />
                     </NavbarBrand>
                     <Nav navbar>
                             <NavItem style={{borderBottom: '1px solid #0C0F0A'}}>

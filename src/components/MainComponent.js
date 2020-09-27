@@ -7,7 +7,7 @@ import Support from './SupportComponent';
 import Cart from './CartComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addTicket, fetchGames, fetchTickets } from '../redux/ActionCreators';
+import { postTicket, fetchGames, fetchTickets } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
 
 const mapStateToProps = (state) => {
@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
   }
 }
 const mapDispatchToProps = (dispatch) => ({
-  addTicket: (topic, email, details) => dispatch(addTicket(topic, email, details)),
+  postTicket: (topic, email, details) => dispatch(postTicket(topic, email, details)),
   fetchGames: () => dispatch(fetchGames()),
   resetTicketForm: () => { dispatch(actions.reset('ticket'))},
   fetchTickets: () => dispatch(fetchTickets())
@@ -41,7 +41,7 @@ class Main extends Component {
             <Route exact path='/home' component={() => <Home 
               games={this.props.games.games}
               isLoading={this.props.games.isLoading}
-              ErrMsg={this.props.games.errMsg}
+              errMsg={this.props.games.errMsg}
             /> } />
             <Route path='/home/:gameId' component={({match}) => { return(
                 <GamesInfo
@@ -54,7 +54,8 @@ class Main extends Component {
             <Route exact path='/support' component={() => <Support
             tickets={this.props.tickets.tickets}
             ticketsErrMsg={this.props.tickets.errMsg}
-            addTicket={this.props.addTicket} resetTicketForm={this.props.resetTicketForm}/> } />
+            postTicket={this.props.postTicket}
+            resetTicketForm={this.props.resetTicketForm}/> } />
             <Redirect to="/home" />
           </Switch>
         <Footer />

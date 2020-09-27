@@ -1,14 +1,44 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
 
-export const addTicket = (topic, email, details) => ({
+export const addTicket = (ticket) => ({
     type: ActionTypes.ADD_TICKET,
-    payload: {
+    payload: ticket
+});
+
+export const postTicket = (topic, email, details) => (dispatch) => {
+    const newTicket = {
         topic: topic,
         email: email,
         details: details
-    }
-});
+    };
+    newTicket.date = new Date().toISOString();
+    return fetch(baseUrl + 'tickets', {
+        method: "POST",
+        body: JSON.stringify(newTicket),
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "same-origin"
+    })
+        .then(response => {
+            if (response.ok) {
+            return response;
+            } 
+            else {
+                var error = new Error('Error ' + response.status + ': ' + response.statusText);
+                error.response = response;
+                throw error;
+            }
+        },
+        error => {
+                var errmsg = new Error(error.message);
+                throw errmsg;
+        })
+        .then(response => response.json())
+        .then(response => dispatch(addTicket(response)))
+        .catch(error =>  { console.log('post tickets', error.message); alert('Your ticket could not be posted\nError: '+error.message); });
+};
 
 export const fetchGames = () => (dispatch) => {
     dispatch(gamesLoading(true));

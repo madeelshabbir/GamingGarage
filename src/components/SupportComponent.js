@@ -13,7 +13,7 @@ class Support extends Component{
     }
 
     handleSubmit = (values) => {
-        this.props.addTicket(values.topic, values.email, values.details);
+        this.props.postTicket(values.topic, values.email, values.details);
         this.props.resetTicketForm();
     }
 
@@ -25,6 +25,7 @@ class Support extends Component{
                     <div>
                         <Media heading>{ticket.topic}</Media>
                         <p>{"Email: "+ticket.email}</p>
+                        <p>{"Date: "+new Intl.DateTimeFormat("en-US", {year: "numeric", month: "short", day: "2-digit"}).format(new Date(Date.parse(ticket.date)))}</p>
                         <p>{ticket.details}</p>
                     </div>
                 </Media>
